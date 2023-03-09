@@ -38,6 +38,7 @@ services:
     volumes:
       - ./gate-simulator:/app
     command: "npm start"
+
 volumes:
   data_postgres:
     driver: local
