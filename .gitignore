@@ -44,4 +44,4 @@ out/
 !**/src/main/**
 !**/src/test/**
 /gate-simulator/node_modules
-.data_mysql
+/data_mysql
