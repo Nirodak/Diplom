@@ -1,0 +1,2 @@
+docker-compose up -d //запуска докера
+java -jar artifacts/aqa-shop.jar --spring.profiles.active=mysql // запуск jar файла
