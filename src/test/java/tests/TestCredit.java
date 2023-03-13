@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -11,7 +10,7 @@ import step.Steps;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class TestBuy {
+public class TestCredit {
 
     @BeforeAll
     static void setUp() {
@@ -21,7 +20,7 @@ public class TestBuy {
     @BeforeEach
     void openBuyWeb() {
         open("http://localhost:8080");
-        step.selectBuy();
+        step.selectCredit();
     }
 
     @AfterAll
@@ -126,87 +125,94 @@ public class TestBuy {
         step.checkInvalidOwner();
     }
 
-    @Epic (value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка невалидного CVV")
     @Test
     @DisplayName("1.6.1 Тест CVV равного 00")
-    void testCvvZero(){
+    void testCvvZero() {
         step.cvvZero();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
+
+    @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
     @Test
     @DisplayName("1.7.1 Тест длинна номера карты меньше 16")
-    void testCardCharLessRequired(){
+    void testCardCharLessRequired() {
         step.cardCharLessRequired();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
+
+    @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
     @Test
     @DisplayName("1.7.2 Тест значение месяца меньше 2 символов")
-    void testMonthCharLessRequired(){
+    void testMonthCharLessRequired() {
         step.monthCharLessRequired();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
+
+    @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
     @Test
     @DisplayName("1.7.3 Тест значение года меньше 2 символов")
-    void testYearCharLessRequired(){
+    void testYearCharLessRequired() {
         step.yearCharLessRequired();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
+
+    @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
     @Test
     @DisplayName("1.7.4 Тест значение cvv меньше 3 символов")
-    void testCvvCardCharLessRequired(){
+    void testCvvCardCharLessRequired() {
         step.cvvCharLessRequired();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
-    @Feature(value="Проверка заполнения формы с пустыми полями")
+
+    @Epic(value = "Проверка дебетовой карты")
+    @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.1 Тест пустое поле номера карты")
-    void testCardNull(){
+    void testCardNull() {
         step.cardNull();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
-    @Feature(value="Проверка заполнения формы с пустыми полями")
+
+    @Epic(value = "Проверка дебетовой карты")
+    @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.2 Тест пустое поле месяц")
-    void testMonthNull(){
+    void testMonthNull() {
         step.monthNull();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
-    @Feature(value="Проверка заполнения формы с пустыми полями")
+
+    @Epic(value = "Проверка дебетовой карты")
+    @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.3 Тест пустое поле года")
-    void testYearNull(){
+    void testYearNull() {
         step.yearNull();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
-    @Feature(value="Проверка заполнения формы с пустыми полями")
+
+    @Epic(value = "Проверка дебетовой карты")
+    @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.4 Тест пустое поле владелец")
-    void testOwnerNull(){
+    void testOwnerNull() {
         step.ownerNull();
         step.checkFormatDate();
     }
-    @Epic (value = "Проверка дебетовой карты")
-    @Feature(value="Проверка заполнения формы с пустыми полями")
+
+    @Epic(value = "Проверка дебетовой карты")
+    @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.5 Тест пустое поле CVV")
-    void testCvvNull(){
+    void testCvvNull() {
         step.cvvNull();
         step.checkFormatDate();
+
     }
-
-
-
 }

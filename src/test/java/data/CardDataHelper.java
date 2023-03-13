@@ -28,13 +28,18 @@ public class CardDataHelper {
         return i;
     }
 
-    //Валидный месяц
-    public static String monthValid() {
+    //Текущий месяц +1
+    public static String monthPlusOne() {
         LocalDate date = LocalDate.now();
         return String.format("%tm", date.plusMonths(1));
     }
+    //Текущий месяц -1
+    public static String monthMinusOne() {
+        LocalDate date = LocalDate.now();
+        return String.format("%tm", date.minusMonths(1));
+    }
 
-    //месяц больше 12
+    //Месяц больше 12
     public static String monthMore12() {
         return "13";
     }
@@ -44,10 +49,15 @@ public class CardDataHelper {
         return "00";
     }
 
-    //Валидный год
-    public static String yearValid() {
+    //Год +1
+    public static String yearPlusOne() {
         LocalDate date = LocalDate.now();
         return String.format("%ty", date.plusYears(1));
+    }
+    //Текущий год
+    public static String yearCurrent() {
+        LocalDate date = LocalDate.now();
+        return String.format("%ty", date);
     }
 
     //Просроченный год
@@ -85,6 +95,30 @@ public class CardDataHelper {
         int i = faker.number().numberBetween(100, 999);
         return Integer.toString(i);
 
+    }
+    // Номер карты меньше 16 символов
+    public static String cardCharLessRequired(){
+        Faker faker = new Faker();
+        long i = faker.number().randomNumber(15, false);
+        return Long.toString(i);
+    }
+    // Месяц меньше 2 символов
+    public static String monthCharLessRequired(){
+        Faker faker = new Faker();
+        long i = faker.number().randomNumber(1, true);
+        return Long.toString(i);
+    }
+    // Год меньше 2 символов
+    public static String yearCharLessRequired(){
+        Faker faker = new Faker();
+        long i = faker.number().randomNumber(1, true);
+        return Long.toString(i);
+    }
+    // CVV меньше 3 символов
+    public static String cvvCharLessRequired(){
+        Faker faker = new Faker();
+        long i = faker.number().randomNumber(2, true);
+        return Long.toString(i);
     }
 
     //cvv 000
