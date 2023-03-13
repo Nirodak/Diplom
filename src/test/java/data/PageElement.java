@@ -21,5 +21,6 @@ public class PageElement {
     private final SelenideElement continueButton = $(byText("Продолжить")).parent().parent();//Кнопка продолжить
     private final SelenideElement successOperation = $(withText("Операция одобрена Банком."));//Нот успешно
     private final SelenideElement errorOperation = $(withText("Ошибка! Банк отказал в проведении операции."));//Нот ошибка
+    private final SelenideElement errorMonth = $(withText("Неверно указан срок действия карты")); // Неверно указан срок действия карты
     private final ElementsCollection errorText = $$(".input__sub");
 }

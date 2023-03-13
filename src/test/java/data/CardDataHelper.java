@@ -1,15 +1,13 @@
 package data;
 
 import com.github.javafaker.Faker;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 public class CardDataHelper {
-   
+
 
     //Карта валидная активная
     public static String cardValidApproved() {
@@ -22,7 +20,7 @@ public class CardDataHelper {
     }
 
     //Генерация невалидной карты
-    public static String cardNotValid() {
+    public static String cardInValid() {
         Faker faker = new Faker();
         String i = Long.toString(faker.number().randomNumber(16, true));
         while (i == cardValidApproved() || i == cardValidDeclined())
