@@ -42,6 +42,7 @@ public class TestBuy {
     @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка валидных карт")
     @Test
+    @Issue(value = "1")
     @DisplayName("Тест валидных значений карта Declined")
     void testValidDeclined() {
         step.selectBuy();
@@ -52,27 +53,28 @@ public class TestBuy {
     @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Невалидная карта")
     @Test
-    @Issue(value = "1")
     @DisplayName("Невалидная карта")
     void testInvalidCard() {
         step.selectBuy();
         step.validDateInvalidCard();
         step.checkAbortMsg();
     }
+
     @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка невалидных месяцов")
     @Test
     @DisplayName("Месяц больше 12")
-    void monthMore12(){
+    void monthMore12() {
         step.selectBuy();
         step.monthMore12();
         step.checkExpiredCardMsg();
     }
+
     @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка невалидных месяцов")
     @Test
     @DisplayName("Месяц равен 00")
-    void monthZero(){
+    void monthZero() {
         step.selectBuy();
         step.monthZero();
         step.checkExpiredCardMsg();
