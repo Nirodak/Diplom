@@ -30,7 +30,7 @@ public class TestCredit {
 
     Steps step = new Steps();
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка валидных значений")
     @Test
     @DisplayName(value = "1.1.1 Тест валидных значений карта Approved/владелец на латинице")
@@ -39,7 +39,7 @@ public class TestCredit {
         step.checkSuccessMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка валидных значений")
     @Test
     @Issue(value = "2")
@@ -49,17 +49,7 @@ public class TestCredit {
         step.checkAbortMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
-    @Feature(value = "Проверка валидных значений")
-    @Test
-    @DisplayName("1.1.3. Тест валидных значений карта Approved/владелец на кирилиице ")
-    void testOwnerKirillica() {
-        step.ownerKirillica();
-        step.checkSuccessMsg();
-
-    }
-
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидного номера карты")
     @Test
     @DisplayName("1.2.1 Тест невалидная карта (карта отсутствует в БД)")
@@ -68,7 +58,16 @@ public class TestCredit {
         step.checkAbortMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
+    @Feature(value = "Проверка невалидного номера карты")
+    @Test
+    @DisplayName("1.2.2 Тест длинна номера карты меньше 16")
+    void testCardCharLessRequired() {
+        step.cardCharLessRequired();
+        step.checkFormatDate();
+    }
+
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидного месяца")
     @Test
     @DisplayName("1.3.1 Тест месяц больше 12")
@@ -77,7 +76,7 @@ public class TestCredit {
         step.checkInvalidCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидного месяца")
     @Test
     @Issue(value = "3")
@@ -87,7 +86,7 @@ public class TestCredit {
         step.checkInvalidCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидного месяца")
     @Test
     @Issue(value = "")
@@ -97,7 +96,16 @@ public class TestCredit {
         step.checkExpiredCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
+    @Feature(value = "Проверка невалидного месяца")
+    @Test
+    @DisplayName("1.3.4 Тест значение месяца меньше 2 символов")
+    void testMonthCharLessRequired() {
+        step.monthCharLessRequired();
+        step.checkFormatDate();
+    }
+
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидого года")
     @Test
     @DisplayName("1.4.1 Тест год действия карты просрочен")
@@ -106,7 +114,7 @@ public class TestCredit {
         step.checkExpiredCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидого года")
     @Test
     @DisplayName("1.4.2 Тест год действия карты превышает 6 лет")
@@ -115,7 +123,16 @@ public class TestCredit {
         step.checkInvalidCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
+    @Feature(value = "Проверка невалидого года")
+    @Test
+    @DisplayName("1.4.3 Тест значение года меньше 2 символов")
+    void testYearCharLessRequired() {
+        step.yearCharLessRequired();
+        step.checkFormatDate();
+    }
+
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидного владельца")
     @Test
     @Issue(value = "")
@@ -125,7 +142,17 @@ public class TestCredit {
         step.checkInvalidOwner();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
+    @Feature(value = "Проверка невалидного владельца")
+    @Test
+    @DisplayName("1.5.2 Тест владельца на кириллице")
+    void testOwnerKirillica() {
+        step.ownerKirillica();
+        step.checkFormatDate();
+
+    }
+
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка невалидного CVV")
     @Test
     @DisplayName("1.6.1 Тест CVV равного 00")
@@ -134,43 +161,17 @@ public class TestCredit {
         step.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
-    @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
+    @Epic(value = "Проверка кредитной карты")
+    @Feature(value = "Проверка невалидного CVV")
     @Test
-    @DisplayName("1.7.1 Тест длинна номера карты меньше 16")
-    void testCardCharLessRequired() {
-        step.cardCharLessRequired();
-        step.checkFormatDate();
-    }
-
-    @Epic(value = "Проверка дебетовой карты")
-    @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
-    @Test
-    @DisplayName("1.7.2 Тест значение месяца меньше 2 символов")
-    void testMonthCharLessRequired() {
-        step.monthCharLessRequired();
-        step.checkFormatDate();
-    }
-
-    @Epic(value = "Проверка дебетовой карты")
-    @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
-    @Test
-    @DisplayName("1.7.3 Тест значение года меньше 2 символов")
-    void testYearCharLessRequired() {
-        step.yearCharLessRequired();
-        step.checkFormatDate();
-    }
-
-    @Epic(value = "Проверка дебетовой карты")
-    @Feature(value = "Проверка заполнения полей меньше требуемого количества символов")
-    @Test
-    @DisplayName("1.7.4 Тест значение cvv меньше 3 символов")
+    @DisplayName("1.6.2 Тест значение cvv меньше 3 символов")
     void testCvvCardCharLessRequired() {
         step.cvvCharLessRequired();
         step.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.1 Тест пустое поле номера карты")
@@ -179,7 +180,7 @@ public class TestCredit {
         step.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.2 Тест пустое поле месяц")
@@ -188,7 +189,7 @@ public class TestCredit {
         step.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.3 Тест пустое поле года")
@@ -197,7 +198,7 @@ public class TestCredit {
         step.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.4 Тест пустое поле владелец")
@@ -206,13 +207,14 @@ public class TestCredit {
         step.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.5 Тест пустое поле CVV")
     void testCvvNull() {
         step.cvvNull();
         step.checkFormatDate();
-
     }
+
+
 }
