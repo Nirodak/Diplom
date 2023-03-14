@@ -1,43 +1,61 @@
 package step;
 
-import data.CardDataHelper;
-import data.PageElement;
 import io.qameta.allure.Step;
+import lombok.val;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class StepsDB {
-
-    PageElement pageElement = new PageElement();
-    public void fillField(String cardNum, String month, String year, String owner, String cvv) {
-        pageElement.getCardNumberField().setValue(cardNum);
-        pageElement.getMonthField().setValue(month);
-        pageElement.getYearField().setValue(year);
-        pageElement.getOwnerField().setValue(owner);
-        pageElement.getCvcField().setValue(cvv);
+    // Получение url из properties
+    private static String url() {
+        return System.getProperty("db.url");
     }
 
-    //Кнопка продолжить
-    private void clickContinue() {
-        pageElement.getContinueButton().click();
-    }
-    @Step("Заполнение валидным значениями (карта Approved)")
-    public void cardApprovedDB() {
-        String cardNum = CardDataHelper.cardValidApproved();
-        String month = CardDataHelper.monthPlusOne();
-        String year = CardDataHelper.yearPlusOne();
-        String owner = CardDataHelper.ownerValid();
-        String cvv = CardDataHelper.cvvValid();
-        fillField(cardNum, month, year, owner, cvv);
-        clickContinue();
+    // Получение username из properties
+    private static String username() {
+        return System.getProperty("username");
     }
 
-    @Step("Заполнение валидными значениям (Карта Declined)")
-    public void cardDeclinedDB() {
-        String cardNum = CardDataHelper.cardValidDeclined();
-        String month = CardDataHelper.monthPlusOne();
-        String year = CardDataHelper.yearPlusOne();
-        String owner = CardDataHelper.ownerValid();
-        String cvv = CardDataHelper.cvvValid();
-        fillField(cardNum, month, year, owner, cvv);
-        clickContinue();
+    // Получение password из properties
+    private static String password() {
+        return System.getProperty("password");
     }
+
+    //Подключение к БД
+    public static Connection conn() {
+        Connection conn;
+        try {
+            conn = DriverManager.getConnection(url(), username(), password());
+            {
+                return conn;
+            }
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+        return null;
+    }
+
+    // Очистка БД
+    public static void cleanTables() throws SQLException {
+        val deleteOrderEntity = "DELETE FROM order_entity;";
+        val deletePaymentEntity = "DELETE FROM payment_entity;";
+        val deleteCreditEntity = "DELETE FROM credit_request_entity;";
+        try (
+                Connection connectionMySQL = conn();
+
+                PreparedStatement statementOrderEntity = connectionMySQL.prepareStatement(deleteOrderEntity);
+                PreparedStatement statementPaymentEntity = connectionMySQL.prepareStatement(deletePaymentEntity);
+                PreparedStatement statementCreditEntity = connectionMySQL.prepareStatement(deleteCreditEntity);
+        ) {
+            statementOrderEntity.executeUpdate();
+            statementPaymentEntity.executeUpdate();
+            statementCreditEntity.executeUpdate();
+        }
+    }
+    @Step ("Проверка поля статус")
+    public void
+
 }

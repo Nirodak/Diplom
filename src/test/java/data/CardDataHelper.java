@@ -7,10 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class CardDataHelper {
-    // Статус карты Approved
-    public String statusApproved = "APPROVED";
-    // Статус карты Declined
-    public String statusDeclined = "DECLINED";
+
 
     //Карта валидная активная
     public static String cardValidApproved() {
@@ -36,6 +33,7 @@ public class CardDataHelper {
         LocalDate date = LocalDate.now();
         return String.format("%tm", date.plusMonths(1));
     }
+
     //Текущий месяц -1
     public static String monthMinusOne() {
         LocalDate date = LocalDate.now();
@@ -57,6 +55,7 @@ public class CardDataHelper {
         LocalDate date = LocalDate.now();
         return String.format("%ty", date.plusYears(1));
     }
+
     //Текущий год
     public static String yearCurrent() {
         LocalDate date = LocalDate.now();
@@ -99,26 +98,30 @@ public class CardDataHelper {
         return Integer.toString(i);
 
     }
+
     // Номер карты меньше 16 символов
-    public static String cardCharLessRequired(){
+    public static String cardCharLessRequired() {
         Faker faker = new Faker();
         long i = faker.number().randomNumber(15, false);
         return Long.toString(i);
     }
+
     // Месяц меньше 2 символов
-    public static String monthCharLessRequired(){
+    public static String monthCharLessRequired() {
         Faker faker = new Faker();
         long i = faker.number().randomNumber(1, true);
         return Long.toString(i);
     }
+
     // Год меньше 2 символов
-    public static String yearCharLessRequired(){
+    public static String yearCharLessRequired() {
         Faker faker = new Faker();
         long i = faker.number().randomNumber(1, true);
         return Long.toString(i);
     }
+
     // CVV меньше 3 символов
-    public static String cvvCharLessRequired(){
+    public static String cvvCharLessRequired() {
         Faker faker = new Faker();
         long i = faker.number().randomNumber(2, true);
         return Long.toString(i);

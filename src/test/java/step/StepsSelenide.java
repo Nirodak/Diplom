@@ -283,8 +283,9 @@ public class StepsSelenide {
         fillField(cardNum, month, year, owner, cvv);
         clickContinue();
     }
-    @Step ("Заполнение полей с пустым CVV")
-    public void cvvNull(){
+
+    @Step("Заполнение полей с пустым CVV")
+    public void cvvNull() {
         String cardNum = CardDataHelper.cardValidApproved();
         String month = CardDataHelper.monthPlusOne();
         String year = CardDataHelper.yearPlusOne();
