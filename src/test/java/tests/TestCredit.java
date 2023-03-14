@@ -50,16 +50,16 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного номера карты")
+    @Feature(value = "Проверка не валидного номера карты")
     @Test
-    @DisplayName("1.2.1 Тест невалидная карта (карта отсутствует в БД)")
+    @DisplayName("1.2.1 Тест не валидная карта (карта отсутствует в БД)")
     void testInvalidCard() {
         step.validDateInvalidCard();
         step.checkAbortMsg();
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного номера карты")
+    @Feature(value = "Проверка не валидного номера карты")
     @Test
     @DisplayName("1.2.2 Тест длинна номера карты меньше 16")
     void testCardCharLessRequired() {
@@ -68,7 +68,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного месяца")
+    @Feature(value = "Проверка не валидного месяца")
     @Test
     @DisplayName("1.3.1 Тест месяц больше 12")
     void testMonthMore12() {
@@ -77,7 +77,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного месяца")
+    @Feature(value = "Проверка не валидного месяца")
     @Test
     @Issue(value = "3")
     @DisplayName("1.3.2 Тест месяц равен 00")
@@ -87,7 +87,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного месяца")
+    @Feature(value = "Проверка не валидного месяца")
     @Test
     @Issue(value = "")
     @DisplayName("1.3.3 Тест месяц действия карты просрочен")
@@ -97,7 +97,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного месяца")
+    @Feature(value = "Проверка не валидного месяца")
     @Test
     @DisplayName("1.3.4 Тест значение месяца меньше 2 символов")
     void testMonthCharLessRequired() {
@@ -106,7 +106,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидого года")
+    @Feature(value = "Проверка не валидого года")
     @Test
     @DisplayName("1.4.1 Тест год действия карты просрочен")
     void testYearOverdue() {
@@ -115,7 +115,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидого года")
+    @Feature(value = "Проверка не валидого года")
     @Test
     @DisplayName("1.4.2 Тест год действия карты превышает 6 лет")
     void testYearExceeded() {
@@ -124,7 +124,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидого года")
+    @Feature(value = "Проверка не валидого года")
     @Test
     @DisplayName("1.4.3 Тест значение года меньше 2 символов")
     void testYearCharLessRequired() {
@@ -133,9 +133,9 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного владельца")
+    @Feature(value = "Проверка не валидного владельца")
     @Test
-    @Issue(value = "")
+    @Issue(value = "4")
     @DisplayName("1.5.1 Тест владельца со спец. символами")
     void testOwnerSpecSymbol() {
         step.ownerSpecSymbol();
@@ -143,7 +143,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного владельца")
+    @Feature(value = "Проверка не валидного владельца")
     @Test
     @DisplayName("1.5.2 Тест владельца на кириллице")
     void testOwnerKirillica() {
@@ -153,7 +153,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного CVV")
+    @Feature(value = "Проверка не валидного CVV")
     @Test
     @DisplayName("1.6.1 Тест CVV равного 00")
     void testCvvZero() {
@@ -162,7 +162,7 @@ public class TestCredit {
     }
 
     @Epic(value = "Проверка кредитной карты")
-    @Feature(value = "Проверка невалидного CVV")
+    @Feature(value = "Проверка не валидного CVV")
     @Test
     @DisplayName("1.6.2 Тест значение cvv меньше 3 символов")
     void testCvvCardCharLessRequired() {

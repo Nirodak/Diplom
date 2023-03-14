@@ -97,7 +97,7 @@ public class Steps {
         clickContinue();
     }
 
-    @Step("Заполнение полей с невалидной картой")
+    @Step("Заполнение полей с не валидной картой")
     public void validDateInvalidCard() {
         String cardNum = CardDataHelper.cardInValid();
         String month = CardDataHelper.monthPlusOne();
