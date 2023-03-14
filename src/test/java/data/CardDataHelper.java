@@ -7,7 +7,10 @@ import java.time.LocalDate;
 
 @Data
 public class CardDataHelper {
-
+    // Статус карты Approved
+    public String statusApproved = "APPROVED";
+    // Статус карты Declined
+    public String statusDeclined = "DECLINED";
 
     //Карта валидная активная
     public static String cardValidApproved() {
