@@ -31,10 +31,10 @@ public class TestDbBuy {
         stepsSelenide.selectBuy();
     }
 
-//    @AfterEach
-//    void cleanDB() throws SQLException {
-//        StepsDb.cleanTables();
-//    }
+    @AfterEach
+    void cleanDB() throws SQLException {
+        StepsDb.cleanTables();
+    }
 
     @AfterAll
     static void tearDown() {
