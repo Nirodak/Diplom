@@ -6,7 +6,7 @@ import data.CardDataHelper;
 import data.PageElement;
 import io.qameta.allure.Step;
 
-public class Steps {
+public class StepsSelenide {
     PageElement pageElement = new PageElement();
 
     //Форма для заполнения полей

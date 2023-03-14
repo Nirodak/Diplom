@@ -1,13 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-import step.Steps;
+import step.StepsSelenide;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -29,7 +28,7 @@ public class TestBuy {
         SelenideLogger.removeListener("allure");
     }
 
-    Steps step = new Steps();
+    StepsSelenide step = new StepsSelenide();
 
     @Epic(value = "Проверка дебетовой карты")
     @Feature(value = "Проверка валидных значений")
