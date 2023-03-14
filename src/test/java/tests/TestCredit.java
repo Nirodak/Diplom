@@ -6,7 +6,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-import step.StepsDB;
+import step.StepsDb;
 import step.StepsSelenide;
 
 import java.sql.SQLException;
@@ -31,7 +31,7 @@ public class TestCredit {
 
     @AfterEach
     void cleanDB() throws SQLException {
-        StepsDB.cleanTables();
+        StepsDb.cleanTables();
     }
 
     @AfterAll
@@ -42,7 +42,7 @@ public class TestCredit {
     @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка валидных значений")
     @Test
-    @DisplayName(value = "2.1.1 Тест валидных значений карта Approved/владелец на латинице")
+    @DisplayName(value = "2.1.1 Тест валидных значений карта Approved")
     void testValidApproved() {
         stepSelenide.validDateApprovedCard();
         stepSelenide.checkSuccessMsg();
@@ -52,7 +52,7 @@ public class TestCredit {
     @Feature(value = "Проверка валидных значений")
     @Test
     @Issue(value = "2")
-    @DisplayName("2.1.2 Тест валидных значений карта Declined/владелец на латинице")
+    @DisplayName("2.1.2 Тест валидных значений карта Declined")
     void testValidDeclined() {
         stepSelenide.validDateDeclinedCard();
         stepSelenide.checkAbortMsg();

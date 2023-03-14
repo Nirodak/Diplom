@@ -38,12 +38,15 @@ public class StepsSelenide {
         pageElement.getButtonPayCredit().click();
     }
 
+    @Step("Отображения блока уведомления о статусе операции")
+    public void checkNotificationStatusOperation() {
+        checkTimeout(pageElement.getNotificationStatusOperation());
+    }
 
     @Step("Проверка сообщения о положительном решении банка")
     public void checkSuccessMsg() {
         checkTimeout(pageElement.getSuccessOperation());
     }
-
 
     @Step("Проверка сообщения об отклонении операции банком")
     public void checkAbortMsg() {

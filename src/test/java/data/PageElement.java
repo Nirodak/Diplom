@@ -26,4 +26,6 @@ public class PageElement {
     private final ElementsCollection errorExpiredCard = $$(withText("Истёк срок действия карты")); // Истёк срок действия карты
     private final SelenideElement errorOwner = $(withText("Неверно указано владелец карты")); //Неверно указан владелец карты
     private final ElementsCollection errorFormatText = $$(".input__sub");
+    private final SelenideElement notificationStatusOperation = $(".notification");
+
 }
