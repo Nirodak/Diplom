@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 @Data
 public class CardDataHelper {
@@ -76,8 +77,8 @@ public class CardDataHelper {
 
     //Валидный пользователь
     public static String ownerValid() {
-        Faker faker = new Faker();
-        String owner = String.valueOf(faker.name().name());
+        Faker faker = new Faker(new Locale("en"));
+        String owner = String.valueOf(faker.name().firstName().replaceAll("'", "")  + " "  + faker.name().lastName().replaceAll("'", ""));
         return owner;
     }
 
