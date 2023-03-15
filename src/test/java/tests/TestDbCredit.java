@@ -26,7 +26,7 @@ public class TestDbCredit {  DbDataHelper dbDataHelper = new DbDataHelper();
 
     @BeforeEach
     void openBuyWeb() {
-        open("http://localhost:8080");
+        open(System.getProperty("webservice.url"));
         stepsSelenide.selectCredit();
     }
 

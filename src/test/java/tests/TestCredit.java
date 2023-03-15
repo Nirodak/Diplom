@@ -24,7 +24,7 @@ public class TestCredit {
 
     @BeforeEach
     void openBuyWeb() {
-        open("http://localhost:8080");
+        open(System.getProperty("webservice.url"));
         stepSelenide.selectCredit();
 
     }

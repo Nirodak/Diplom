@@ -29,7 +29,7 @@ public class TestDbBuy {
 
     @BeforeEach
     void openBuyWeb() {
-        open("http://localhost:8080");
+        open(System.getProperty("webservice.url"));
         stepsSelenide.selectBuy();
     }
 

@@ -49,11 +49,11 @@ public class StepsDb {
         val deleteCreditEntity = "DELETE FROM credit_request_entity;";
         val deleteOrderEntity = "DELETE FROM order_entity;";
         try (
-                Connection connectionMySQL = conn();
+                Connection connectionSQL = conn();
 
-                PreparedStatement statementPaymentEntity = connectionMySQL.prepareStatement(deletePaymentEntity);
-                PreparedStatement statementCreditEntity = connectionMySQL.prepareStatement(deleteCreditEntity);
-                PreparedStatement statementOrderEntity = connectionMySQL.prepareStatement(deleteOrderEntity);
+                PreparedStatement statementPaymentEntity = connectionSQL.prepareStatement(deletePaymentEntity);
+                PreparedStatement statementCreditEntity = connectionSQL.prepareStatement(deleteCreditEntity);
+                PreparedStatement statementOrderEntity = connectionSQL.prepareStatement(deleteOrderEntity);
         ) {
             statementPaymentEntity.executeUpdate();
             statementCreditEntity.executeUpdate();

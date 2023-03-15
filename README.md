@@ -4,9 +4,12 @@
 * Удобное для работы с кодом приложение
 
 ## Шаги запуска:
-* Клонируем репозиторий
+#### 1.Клонируем репозиторий
+#### 2. Разворачиваем окружение в Docker:
 * В командной строке вводим: docker-compose up -d
-* Запускаем jar файл командной для тестирования на БД mysql: java -jar artifacts/aqa-shop.jar --spring.profiles.active=mysql
+#### 3. Запускаем веб сервис:
+* БД MySQL: java -jar artifacts/aqa-shop.jar --spring.profiles.active=mysql
+* БД PostgreSQL
 * Запуск автотестов командой: ./gradlew clean test allureReport   
 * Формирование отчёта о результатах автотестов: ./gradlew allureServe   
 

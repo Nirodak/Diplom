@@ -1,5 +1,6 @@
 docker-compose up -d //запуска докера
-java -jar artifacts/aqa-shop.jar --spring.profiles.active=mysql // запуск jar файла
+java -jar artifacts/aqa-shop.jar --spring.profiles.active=mysql // запуск на mysql
+java -jar artifacts/aqa-shop.jar --spring.profiles.active=postgresql // запуск на postgresql
 ./gradlew clean test allureReport   // запуск теста
 ./gradlew allureServe  //формирование отчёта
 
