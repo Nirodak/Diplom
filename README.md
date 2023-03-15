@@ -9,7 +9,9 @@
 * В командной строке вводим: docker-compose up -d
 #### 3. Запускаем веб сервис:
 * БД MySQL: java -jar artifacts/aqa-shop.jar --spring.profiles.active=mysql
-* БД PostgreSQL
-* Запуск автотестов командой: ./gradlew clean test allureReport   
-* Формирование отчёта о результатах автотестов: ./gradlew allureServe   
+* БД PostgreSQL :  java -jar artifacts/aqa-shop.jar --spring.profiles.active=postgresql
+#### 4. Запуск автотестов
+* В командной строке вводим: ./gradlew clean test allureReport  
+#### 5. Формирование отчёта о результатах автотестов:
+* В командной строке вводим: ./gradlew allureServe   
 
