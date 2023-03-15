@@ -15,10 +15,7 @@ import java.sql.SQLException;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-public class TestDbBuy {
-
-    DbDataHelper dbDataHelper = new DbDataHelper();
+public class TestDbCredit {  DbDataHelper dbDataHelper = new DbDataHelper();
     StepsSelenide stepsSelenide = new StepsSelenide();
     StepsDb stepsDB = new StepsDb();
 
@@ -30,7 +27,7 @@ public class TestDbBuy {
     @BeforeEach
     void openBuyWeb() {
         open("http://localhost:8080");
-        stepsSelenide.selectBuy();
+        stepsSelenide.selectCredit();
     }
 
     @AfterEach
@@ -43,66 +40,54 @@ public class TestDbBuy {
         SelenideLogger.removeListener("allure");
     }
 
-    @Epic(value = "Проверка оплаты картой БД")
+    @Epic(value = "Проверка кредитной оплаты БД")
     @Feature(value = "Сравнение вводимых значений и тестовых данных с записями в БД")
     @Test
-    @DisplayName("3.1.1 Сравнение статуса карты Approved со статусом в БД")
+    @DisplayName("4.1.1 Сравнение статуса карты Approved со статусом в БД")
     void testCardStatusApproved() throws SQLException {
         stepsSelenide.validDateApprovedCard();
         stepsSelenide.checkNotificationStatusOperation();
         val expected = dbDataHelper.getStatusApproved();
-        val actual = stepsDB.paymentEntityValues().getStatus();
+        val actual = stepsDB.creditEntityValues().getStatus();
         assertEquals(expected, actual);
     }
 
-    @Epic(value = "Проверка оплаты картой БД")
+    @Epic(value = "Проверка кредитной оплаты БД")
     @Feature(value = "Сравнение вводимых значений и тестовых данных с записями в БД")
     @Test
-    @DisplayName("3.1.2 Сравнение статуса карты Declined со статусом в БД")
+    @DisplayName("4.1.2 Сравнение статуса карты Declined со статусом в БД")
     void testCardStatusDeclined() throws SQLException {
         stepsSelenide.validDateDeclinedCard();
         stepsSelenide.checkNotificationStatusOperation();
         val expected = dbDataHelper.getStatusDeclined();
-        val actual = stepsDB.paymentEntityValues().getStatus();
+        val actual = stepsDB.creditEntityValues().getStatus();
         assertEquals(expected, actual);
     }
 
-    @Epic(value = "Проверка оплаты картой БД")
+    @Epic(value = "Проверка кредитной оплаты БД")
     @Feature(value = "Сравнение вводимых значений и тестовых данных с записями в БД")
     @Test
-    @DisplayName("3.1.3 Сравнение поля transaction_id в payment_entity с полем payment_id в order_entity")
-    void checkTransactionIdWithPaymentId() throws SQLException {
+    @DisplayName("4.1.3 Сравнение поля bank_id в credit_entity с полем credit_id в order_entity")
+    void checkTransactionIdWithCreditId() throws SQLException {
         stepsSelenide.validDateApprovedCard();
         stepsSelenide.checkNotificationStatusOperation();
-        val expected = stepsDB.paymentEntityValues().getTransaction_id();
-        val actual = stepsDB.orderEntityValues().getPayment_id();
+        val expected = stepsDB.creditEntityValues().getBank_id();
+        val actual = stepsDB.orderEntityValues().getCredit_id();
         assertEquals(expected, actual);
     }
 
-    @Epic(value = "Проверка оплаты картой БД")
+    @Epic(value = "Проверка кредитной оплаты БД")
     @Feature(value = "Сравнение вводимых значений и тестовых данных с записями в БД")
     @Test
-    @DisplayName("3.1.4 Сравнение стоимости тура со значением amount в payment_entity")
-    void checkCostWithAmount() throws SQLException {
-        stepsSelenide.validDateApprovedCard();
-        stepsSelenide.checkNotificationStatusOperation();
-        val expected = dbDataHelper.getCostTour();
-        val actual = stepsDB.paymentEntityValues().getAmount();
-        assertEquals(expected, actual);
-    }
-
-    @Epic(value = "Проверка оплаты картой БД")
-    @Feature(value = "Сравнение вводимых значений и тестовых данных с записями в БД")
-    @Test
-    @DisplayName("3.1.5 Проверка отсутствия записей в БД в случае отклонения операции")
+    @DisplayName("4.1.4 Проверка отсутствия записей в БД в случае отклонения операции")
     void checkAbortOperationPaymentEntity() throws SQLException {
-        val expectedPayment = stepsDB.paymentEntityQuantityCount();
+        val expectedCredit = stepsDB.creditEntityQuantityCount();
         val expectedOrder = stepsDB.orderEntityQuantityCount();
         stepsSelenide.cardDateInvalid();
         stepsSelenide.checkNotificationStatusOperation();
-        val actualPayment = stepsDB.paymentEntityQuantityCount();
+        val actualCredit = stepsDB.creditEntityQuantityCount();
         val actualOrder = stepsDB.orderEntityQuantityCount();
-        assertEquals(expectedPayment, actualPayment);
+        assertEquals(expectedCredit, actualCredit);
         assertEquals(expectedOrder, actualOrder);
     }
 }

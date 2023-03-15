@@ -13,12 +13,13 @@ public class DbDataHelper {
     // сумма из БД
     private int amount;
     //Id транзакции из БД
-    private int transactionId;
+    private String transaction_id;
     //Id банка из БД
-    private int bankId;
+    private String bank_id;
     //Id оплаты дебетовой карты
-    private int paymentID;
+    private String payment_id;
     //Id оплаты кредитной карты
-    private int creditID;
-
+    private String credit_id;
+    //стоимость тура по условию
+    private int costTour = 4500000;
 }

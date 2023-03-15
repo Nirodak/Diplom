@@ -39,7 +39,7 @@ public class TestCredit {
         SelenideLogger.removeListener("allure");
     }
 
-    @Epic(value = "Проверка кредитной карты")
+    @Epic(value = "Проверка кредитной оплаты")
     @Feature(value = "Проверка валидных значений")
     @Test
     @DisplayName(value = "2.1.1 Тест валидных значений карта Approved")
@@ -63,7 +63,7 @@ public class TestCredit {
     @Test
     @DisplayName("2.2.1 Тест не валидная карта (карта отсутствует в БД)")
     void testInvalidCard() {
-        stepSelenide.validDateInvalidCard();
+        stepSelenide.cardDateInvalid();
         stepSelenide.checkAbortMsg();
     }
 

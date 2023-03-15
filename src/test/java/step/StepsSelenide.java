@@ -101,7 +101,7 @@ public class StepsSelenide {
     }
 
     @Step("Заполнение полей с не валидной картой")
-    public void validDateInvalidCard() {
+    public void cardDateInvalid() {
         String cardNum = CardDataHelper.cardInValid();
         String month = CardDataHelper.monthPlusOne();
         String year = CardDataHelper.yearPlusOne();

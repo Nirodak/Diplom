@@ -6,10 +6,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-import step.StepsDb;
 import step.StepsSelenide;
-
-import java.sql.SQLException;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -27,10 +24,10 @@ public class TestBuy {
         stepSelenide.selectBuy();
     }
 
-    @AfterEach
-    void cleanDB() throws SQLException {
-        StepsDb.cleanTables();
-    }
+//    @AfterEach
+//    void cleanDB() throws SQLException {
+//        StepsDb.cleanTables();
+//    }
 
     @AfterAll
     static void tearDown() {
@@ -38,7 +35,7 @@ public class TestBuy {
     }
 
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка валидных значений")
     @Test
     @DisplayName(value = "1.1.1 Тест валидных значений карта Approved")
@@ -47,7 +44,7 @@ public class TestBuy {
         stepSelenide.checkSuccessMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка валидных значений")
     @Test
     @Issue(value = "2")
@@ -57,16 +54,16 @@ public class TestBuy {
         stepSelenide.checkAbortMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного номера карты")
     @Test
     @DisplayName("1.2.1 Тест не валидная карта (карта отсутствует в БД)")
     void testInvalidCard() {
-        stepSelenide.validDateInvalidCard();
+        stepSelenide.cardDateInvalid();
         stepSelenide.checkAbortMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного номера карты")
     @Test
     @DisplayName("1.2.2 Тест длинна номера карты меньше 16")
@@ -75,7 +72,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного месяца")
     @Test
     @DisplayName("1.3.1 Тест месяц больше 12")
@@ -84,7 +81,7 @@ public class TestBuy {
         stepSelenide.checkInvalidCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного месяца")
     @Test
     @Issue(value = "3")
@@ -94,7 +91,7 @@ public class TestBuy {
         stepSelenide.checkInvalidCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного месяца")
     @Test
     @Issue(value = "")
@@ -104,7 +101,7 @@ public class TestBuy {
         stepSelenide.checkExpiredCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного месяца")
     @Test
     @DisplayName("1.3.4 Тест значение месяца меньше 2 символов")
@@ -113,7 +110,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидого года")
     @Test
     @DisplayName("1.4.1 Тест год действия карты просрочен")
@@ -122,7 +119,7 @@ public class TestBuy {
         stepSelenide.checkExpiredCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидого года")
     @Test
     @DisplayName("1.4.2 Тест год действия карты превышает 6 лет")
@@ -131,7 +128,7 @@ public class TestBuy {
         stepSelenide.checkInvalidCardMsg();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидого года")
     @Test
     @DisplayName("1.4.3 Тест значение года меньше 2 символов")
@@ -140,7 +137,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного владельца")
     @Test
     @Issue(value = "4")
@@ -150,7 +147,7 @@ public class TestBuy {
         stepSelenide.checkInvalidOwner();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного владельца")
     @Test
     @DisplayName("1.5.2 Тест владельца на кириллице")
@@ -160,7 +157,7 @@ public class TestBuy {
 
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного CVV")
     @Test
     @DisplayName("1.6.1 Тест CVV равного 00")
@@ -169,7 +166,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного CVV")
     @Test
     @DisplayName("1.6.2 Тест значение cvv меньше 3 символов")
@@ -179,7 +176,7 @@ public class TestBuy {
     }
 
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.1 Тест пустое поле номера карты")
@@ -188,7 +185,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.2 Тест пустое поле месяц")
@@ -197,7 +194,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.3 Тест пустое поле года")
@@ -206,7 +203,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.4 Тест пустое поле владелец")
@@ -215,7 +212,7 @@ public class TestBuy {
         stepSelenide.checkFormatDate();
     }
 
-    @Epic(value = "Проверка дебетовой карты")
+    @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка заполнения формы с пустыми полями")
     @Test
     @DisplayName("1.8.5 Тест пустое поле CVV")
