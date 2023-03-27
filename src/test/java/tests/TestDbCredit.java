@@ -4,6 +4,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DbDataHelper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
 import org.junit.jupiter.api.*;
@@ -67,6 +68,7 @@ public class TestDbCredit {  DbDataHelper dbDataHelper = new DbDataHelper();
     @Epic(value = "Проверка кредитной оплаты БД")
     @Feature(value = "Сравнение вводимых значений и тестовых данных с записями в БД")
     @Test
+    @Issue(value = "8")
     @DisplayName("4.1.3 Сравнение поля bank_id в credit_entity с полем credit_id в order_entity")
     void checkTransactionIdWithCreditId() throws SQLException {
         stepsSelenide.validDateApprovedCard();

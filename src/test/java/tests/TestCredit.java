@@ -165,6 +165,7 @@ public class TestCredit {
     @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка не валидного владельца")
     @Test
+    @Issue(value = "6")
     @DisplayName("2.5.3 Тест владельца цифрами")
     void testOwnerNumber() {
         stepSelenide.ownerNumber();
