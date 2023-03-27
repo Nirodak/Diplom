@@ -187,6 +187,16 @@ public class StepsSelenide {
         fillField(cardNum, month, year, owner, cvv);
         clickContinue();
     }
+    @Step("Заполнение полей с владельцем из цифр")
+    public void ownerNumber(){
+        String cardNum = CardDataHelper.cardValidApproved();
+        String month = CardDataHelper.monthPlusOne();
+        String year = CardDataHelper.yearPlusOne();
+        String owner = CardDataHelper.ownerNumber();
+        String cvv = CardDataHelper.cvvValid();
+        fillField(cardNum, month, year, owner, cvv);
+        clickContinue();
+    }
 
     @Step("Заполнение полей с cvv равным 000")
     public void cvvZero() {

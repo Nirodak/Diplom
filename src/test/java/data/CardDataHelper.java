@@ -91,6 +91,10 @@ public class CardDataHelper {
     public static String ownerSpecSymbol() {
         return "%&^!@#";
     }
+    //Пользователь цифры
+    public static String ownerNumber (){
+        return "123";
+    }
 
     //cvv валидное
     public static String cvvValid() {

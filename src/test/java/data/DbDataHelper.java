@@ -21,5 +21,5 @@ public class DbDataHelper {
     //Id оплаты кредитной карты
     private String credit_id;
     //стоимость тура по условию
-    private int costTour = 4500000;
+    private int costTour = 450000;
 }

@@ -6,7 +6,10 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import step.StepsDb;
 import step.StepsSelenide;
+
+import java.sql.SQLException;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -24,10 +27,10 @@ public class TestBuy {
         stepSelenide.selectBuy();
     }
 
-//    @AfterEach
-//    void cleanDB() throws SQLException {
-//        StepsDb.cleanTables();
-//    }
+    @AfterEach
+    void cleanDB() throws SQLException {
+        StepsDb.cleanTables();
+    }
 
     @AfterAll
     static void tearDown() {
@@ -150,13 +153,22 @@ public class TestBuy {
     @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного владельца")
     @Test
+    @Issue(value = "5")
     @DisplayName("1.5.2 Тест владельца на кириллице")
     void testOwnerKirillica() {
         stepSelenide.ownerKirillica();
-        stepSelenide.checkFormatDate();
+        stepSelenide.checkInvalidOwner();
 
     }
+    @Epic(value = "Проверка оплаты картой")
+    @Feature(value = "Проверка не валидного владельца")
+    @Test
+    @DisplayName("1.5.3 Тест владельца цифрами")
+    void testOwnerNumber() {
+        stepSelenide.ownerNumber();
+        stepSelenide.checkInvalidOwner();
 
+    }
     @Epic(value = "Проверка оплаты картой")
     @Feature(value = "Проверка не валидного CVV")
     @Test

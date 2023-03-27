@@ -154,10 +154,21 @@ public class TestCredit {
     @Epic(value = "Проверка кредитной карты")
     @Feature(value = "Проверка не валидного владельца")
     @Test
+    @Issue(value = "5")
     @DisplayName("2.5.2 Тест владельца на кириллице")
     void testOwnerKirillica() {
         stepSelenide.ownerKirillica();
-        stepSelenide.checkFormatDate();
+        stepSelenide.checkInvalidOwner();
+
+    }
+
+    @Epic(value = "Проверка кредитной карты")
+    @Feature(value = "Проверка не валидного владельца")
+    @Test
+    @DisplayName("2.5.3 Тест владельца цифрами")
+    void testOwnerNumber() {
+        stepSelenide.ownerNumber();
+        stepSelenide.checkInvalidOwner();
 
     }
 
